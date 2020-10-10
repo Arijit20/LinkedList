@@ -78,4 +78,21 @@ public class NodeTest {
  				&& linkedList.tail.equals(fourthNode);
  		assertTrue(result);
     }
+    @Test
+    public void givenNumbersTestingDeleteFromLastFunction() {
+    	Node<Integer> firstNode = new Node<>(70);
+ 		Node<Integer> secondNode = new Node<>(30);
+ 		Node<Integer> thirdNode = new Node<>(56);
+ 		Node<Integer> fourthNode = new Node<>(60);
+ 		LinkedList<Integer> linkedList = new LinkedList<>();
+ 		linkedList.add(firstNode);
+ 		linkedList.append(secondNode);
+ 		linkedList.append(thirdNode);
+ 		linkedList.append(fourthNode);
+ 		linkedList.popLast();
+ 		linkedList.print();
+ 		boolean result = linkedList.head.equals(firstNode) && linkedList.head.getNext().equals(secondNode)
+ 				&& linkedList.tail.equals(thirdNode);
+ 		assertTrue(result);
+    }
 }
