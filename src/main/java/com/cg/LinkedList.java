@@ -1,6 +1,6 @@
 package com.cg;
 
-public class LinkedList<K> {
+public class LinkedList<K extends Comparable<K>> {
 	INode<K> head;
 	INode<K> tail;
 
@@ -33,13 +33,32 @@ public class LinkedList<K> {
 
 		}
 	}
+	public void addSort(INode<K> newNode) {
+		INode<K> node1 = head;
+		INode<K> node2 = null;
+		while(node1 != null && newNode.getKey().compareTo(node1.getKey()) > 0) {
+			node2 = node1;
+			node1 = node1.getNext();
+		}
+		if(node2 == null) {
+			this.head = newNode;
+		}else {
+			node2.setNext(newNode);
+		}
+		newNode.setNext(node1);
+		while(node1 != null) {
+			this.tail = node1;
+			node1 = node1.getNext();
+		}
+		
+	}
 
 	public void insert(INode<K> preNode, INode newNode, INode nextNode) {
 		preNode.setNext(newNode);
 		newNode.setNext(nextNode);
 	}
 
-	public void insert(INode<K> preNode, INode newNode) {
+	public void insert(INode<K> preNode, INode<K> newNode) {
 		INode<K> tempNode = preNode.getNext();
 		preNode.setNext(newNode);
 		newNode.setNext(tempNode);
@@ -53,9 +72,7 @@ public class LinkedList<K> {
 
 	public void pop(INode<K> node) {
 		INode<K> tempNode = head;
-		System.out.println("Start loop");
 		while (tempNode.getNext() != node) {
-			System.out.println("inside");
 			tempNode = tempNode.getNext();
 		}
 		tempNode.setNext(node.getNext());

@@ -143,4 +143,18 @@ public class NodeTest {
  		System.out.println(linkedList.size());
  		Assert.assertEquals(3, linkedList.size());
     }
+    @Test
+	public void given3NumbersWhenAddedToLinkedListShouldBeSorted() {
+		Node<Integer> firstNode = new Node<>(70);
+		Node<Integer> secondNode = new Node<>(30);
+		Node<Integer> thirdNode = new Node<>(56);
+		LinkedList<Integer> linkedList = new LinkedList<>();
+		linkedList.addSort(firstNode);
+		linkedList.addSort(secondNode);
+		linkedList.addSort(thirdNode);
+		linkedList.print();
+		boolean result = linkedList.head.equals(secondNode) && linkedList.head.getNext().equals(thirdNode)
+				&& linkedList.tail.equals(firstNode);
+		Assert.assertTrue(result);
+	}
 }
