@@ -1,19 +1,31 @@
 package com.cg;
 
-public class Node<K> {
+public class Node<K> implements INode<K> {
+	private INode next;
 	private K key;
-	private Node next;
 
 	public Node(K key) {
 		this.key = key;
 		this.next = null;
 	}
 
-	public Node getNext() {
+	@Override
+	public INode<K> getNext() {
 		return next;
 	}
 
-	public void setNext(Node next) {
-		this.next = next;
+	@Override
+	public K getKey() {
+		return key;
+	}
+
+	@Override
+	public void setKey(K key) {
+		this.key = key;
+	}
+
+	@Override
+	public void setNext(INode next) {
+		this.next = (Node<K>) next;
 	}
 }
