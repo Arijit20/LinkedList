@@ -38,30 +38,53 @@ public class LinkedList<K> {
 		preNode.setNext(newNode);
 		newNode.setNext(nextNode);
 	}
+
 	public void insert(INode<K> preNode, INode newNode) {
 		INode<K> tempNode = preNode.getNext();
 		preNode.setNext(newNode);
 		newNode.setNext(tempNode);
 	}
 
-	public INode pop() {
-		INode tempNode = head;
+	public INode<K> pop() {
+		INode<K> tempNode = head;
 		head = head.getNext();
 		return tempNode;
 	}
+
+	public void pop(INode<K> node) {
+		INode<K> tempNode = head;
+		System.out.println("Start loop");
+		while (tempNode.getNext() != node) {
+			System.out.println("inside");
+			tempNode = tempNode.getNext();
+		}
+		tempNode.setNext(node.getNext());
+	}
+
+	public int size() {
+		int size = 0;
+		INode<K> tempNode = head;
+		while (tempNode != null) {
+			size++;
+			tempNode = tempNode.getNext();
+		}
+		return size;
+	}
+
 	public INode<K> popLast() {
 		INode<K> tempNode = head;
-		while(! tempNode.getNext().equals(tail)) {
+		while (!tempNode.getNext().equals(tail)) {
 			tempNode = tempNode.getNext();
 		}
 		tail = tempNode;
 		tempNode = tempNode.getNext();
 		return tempNode;
 	}
-	public INode<K> searchNode(K key){
+
+	public INode<K> searchNode(K key) {
 		INode<K> tempNode = head;
-		while(tempNode != null) {
-			if(tempNode.getKey() == key)
+		while (tempNode != null) {
+			if (tempNode.getKey() == key)
 				return tempNode;
 			tempNode = tempNode.getNext();
 		}
