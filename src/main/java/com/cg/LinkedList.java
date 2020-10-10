@@ -44,14 +44,23 @@ public class LinkedList<K> {
 		head = head.getNext();
 		return tempNode;
 	}
-	public INode popLast() {
-		INode tempNode = head;
+	public INode<K> popLast() {
+		INode<K> tempNode = head;
 		while(! tempNode.getNext().equals(tail)) {
 			tempNode = tempNode.getNext();
 		}
 		tail = tempNode;
 		tempNode = tempNode.getNext();
 		return tempNode;
+	}
+	public INode<K> searchNode(K key){
+		INode<K> tempNode = head;
+		while(tempNode != null) {
+			if(tempNode.getKey() == key)
+				return tempNode;
+			tempNode = tempNode.getNext();
+		}
+		return null;
 	}
 
 	public void print() {
