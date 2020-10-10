@@ -33,9 +33,16 @@ public class LinkedList<K> {
 
 		}
 	}
+
 	public void insert(INode<K> preNode, INode newNode, INode nextNode) {
 		preNode.setNext(newNode);
 		newNode.setNext(nextNode);
+	}
+
+	public INode pop() {
+		INode tempNode = head;
+		head = head.getNext();
+		return tempNode;
 	}
 
 	public void print() {
