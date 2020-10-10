@@ -109,4 +109,21 @@ public class NodeTest {
  		linkedList.print();
  		Assert.assertEquals(secondNode, linkedList.searchNode(30));
     }
+    @Test
+    public void givenNumbersTestingInsertFunction() {
+    	Node<Integer> firstNode = new Node<>(70);
+ 		Node<Integer> secondNode = new Node<>(30);
+ 		Node<Integer> thirdNode = new Node<>(56);
+ 		Node<Integer> fourthNode = new Node<>(40);
+ 		LinkedList<Integer> linkedList = new LinkedList<>();
+ 		linkedList.add(firstNode);
+ 		linkedList.append(secondNode);
+ 		linkedList.append(thirdNode);
+ 		INode tempNode = linkedList.searchNode(30);
+ 		linkedList.insert(tempNode, fourthNode);
+ 		linkedList.print();
+ 		boolean result = linkedList.head.equals(firstNode) && linkedList.head.getNext().equals(secondNode)
+ 				&& linkedList.head.getNext().getNext().equals(fourthNode) && linkedList.tail.equals(thirdNode);
+ 		assertTrue(result);
+    }
 }
