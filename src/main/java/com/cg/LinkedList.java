@@ -38,6 +38,11 @@ public class LinkedList<K> {
 		preNode.setNext(newNode);
 		newNode.setNext(nextNode);
 	}
+	public void insert(INode<K> preNode, INode newNode) {
+		INode<K> tempNode = preNode.getNext();
+		preNode.setNext(newNode);
+		newNode.setNext(tempNode);
+	}
 
 	public INode pop() {
 		INode tempNode = head;
