@@ -33,6 +33,10 @@ public class LinkedList<K> {
 
 		}
 	}
+	public void insert(INode<K> preNode, INode newNode, INode nextNode) {
+		preNode.setNext(newNode);
+		newNode.setNext(nextNode);
+	}
 
 	public void print() {
 		System.out.println("Printing LinkedList");

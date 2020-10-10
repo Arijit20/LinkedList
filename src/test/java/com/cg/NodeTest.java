@@ -47,4 +47,18 @@ public class NodeTest {
  				&& linkedList.tail.equals(thirdNode);
  		assertTrue(result);
  	}
+    @Test
+    public void given3NumbersTestingInsertFunction() {
+    	Node<Integer> firstNode = new Node<>(70);
+ 		Node<Integer> secondNode = new Node<>(30);
+ 		Node<Integer> thirdNode = new Node<>(56);
+ 		LinkedList<Integer> linkedList = new LinkedList<>();
+ 		linkedList.add(firstNode);
+ 		linkedList.append(thirdNode);
+ 		linkedList.insert(firstNode, secondNode, thirdNode);
+ 		linkedList.print();
+ 		boolean result = linkedList.head.equals(firstNode) && linkedList.head.getNext().equals(secondNode)
+ 				&& linkedList.tail.equals(thirdNode);
+ 		assertTrue(result);
+    }
 }
