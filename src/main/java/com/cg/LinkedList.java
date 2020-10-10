@@ -44,6 +44,15 @@ public class LinkedList<K> {
 		head = head.getNext();
 		return tempNode;
 	}
+	public INode popLast() {
+		INode tempNode = head;
+		while(! tempNode.getNext().equals(tail)) {
+			tempNode = tempNode.getNext();
+		}
+		tail = tempNode;
+		tempNode = tempNode.getNext();
+		return tempNode;
+	}
 
 	public void print() {
 		System.out.println("Printing LinkedList");
